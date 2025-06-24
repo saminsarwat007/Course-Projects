@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "320766273180",
+    "project_id": "agrothink-app-12345",
+    "storage_bucket": "agrothink-app-12345.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320766273180:android:b93e1b6c5f6f2757736f59",
+        "android_client_info": {
+          "package_name": "com.agrothink.agrothink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320766273180-qqg9cccnonniqhrpffg81em43up85ers.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_M83OXCXZPAUrErV78KR70lYOCEdKWRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320766273180-qqg9cccnonniqhrpffg81em43up85ers.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "320766273180-lj8j53v5ob2kg26hb46kiqooqjs144f9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myFirebaseApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320766273180:android:fdf1c74cd88d5951736f59",
+        "android_client_info": {
+          "package_name": "com.agrothink.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320766273180-qqg9cccnonniqhrpffg81em43up85ers.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_M83OXCXZPAUrErV78KR70lYOCEdKWRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320766273180-qqg9cccnonniqhrpffg81em43up85ers.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "320766273180-lj8j53v5ob2kg26hb46kiqooqjs144f9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myFirebaseApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+} 
