@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduMatrix x Neurokokoro Malaysia</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #004d40;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    nav {
+      background: #00695c;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 2rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    footer {
+      background: #004d40;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    .cta {
+      background: #e0f2f1;
+      padding: 1.5rem;
+      border-left: 4px solid #00695c;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EduMatrix - Sole Distributor of Neurokokoro in Malaysia</h1>
+    <p>Bringing science-based cognitive development to learning centers nationwide</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#program">Neurokokoro</a>
+    <a href="#benefits">Why Partner With Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About EduMatrix</h2>
+      <p>EduMatrix is a forward-thinking education solutions provider focused on delivering impactful programs that enhance learning outcomes. As the exclusive distributor of Neurokokoro in Malaysia, we support centers seeking to introduce cognitive development into their curriculum.</p>
+    </section>
+
+    <section id="program">
+      <h2>What is Neurokokoro?</h2>
+      <p>Neurokokoro is a science-backed, gamified cognitive development program designed to strengthen executive function, memory, focus, and emotional regulation in children. It combines neuroscience, AI-driven adaptation, and fun challenges to enhance brain performance.</p>
+    </section>
+
+    <section id="benefits">
+      <h2>Why Partner With Us?</h2>
+      <ul>
+        <li>Exclusive access to Neurokokoro's B2B implementation tools and training</li>
+        <li>Full support for center onboarding, training, and technical setup</li>
+        <li>Opportunity to position your center as a pioneer in cognitive education</li>
+        <li>Flexible packages tailored for tuition centers, enrichment hubs, and international schools</li>
+      </ul>
+      <div class="cta">
+        <strong>Looking to stand out in a competitive education market?</strong><br/>
+        Let's explore how Neurokokoro can give your center the edge.
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Email: info@edumatrix.my</p>
+      <p>WhatsApp: +60 17-241 0837</p>
+      <p>Connect with us for a demo or proposal tailored to your center's needs.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EduMatrix Sdn Bhd. Exclusive Distributor of Neurokokoro Malaysia.</p>
+  </footer>
+
+  <!-- Flowise Chatbot Integration -->
+  <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "e332d43d-fcae-4842-90db-4c913c15017b",
+        apiHost: "https://cloud.flowiseai.com",
+        theme: {
+            button: {
+                backgroundColor: '#00695c',
+                right: 20,
+                bottom: 20,
+                size: 48,
+                dragAndDrop: true,
+                iconColor: 'white',
+                customIconSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+                autoWindowOpen: {
+                    autoOpen: false,
+                    openDelay: 3,
+                    autoOpenOnMobile: false
+                }
+            },
+            tooltip: {
+                showTooltip: true,
+                tooltipMessage: 'Hi! Ask me about Neurokokoro 👋',
+                tooltipBackgroundColor: '#004d40',
+                tooltipTextColor: 'white',
+                tooltipFontSize: 14
+            },
+            disclaimer: {
+                title: 'Welcome to EduMatrix',
+                message: "I'm here to help you learn about Neurokokoro and our cognitive development programs. How can I assist you today?",
+                textColor: '#333',
+                buttonColor: '#00695c',
+                buttonText: 'Start Chat',
+                buttonTextColor: 'white',
+                blurredBackgroundColor: 'rgba(0, 77, 64, 0.4)',
+                backgroundColor: 'white'
+            },
+            chatWindow: {
+                showTitle: true,
+                showAgentMessages: true,
+                title: 'EduMatrix Assistant',
+                titleAvatarSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+                welcomeMessage: 'Hello! I\'m here to help you learn about Neurokokoro and how it can benefit your learning center. What would you like to know?',
+                errorMessage: 'I apologize, but I\'m having trouble connecting. Please try again or contact us directly at info@edumatrix.my',
+                backgroundColor: '#ffffff',
+                height: 600,
+                width: 400,
+                fontSize: 14,
+                starterPrompts: [
+                    "What is Neurokokoro?",
+                    "How can it benefit my center?",
+                    "Pricing packages?",
+                    "How to get started?"
+                ],
+                starterPromptFontSize: 13,
+                clearChatOnReload: false,
+                sourceDocsTitle: 'Learn more:',
+                renderHTML: true,
+                botMessage: {
+                    backgroundColor: '#f0f9ff',
+                    textColor: '#1f2937',
+                    showAvatar: true,
+                    avatarSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg'
+                },
+                userMessage: {
+                    backgroundColor: '#00695c',
+                    textColor: '#ffffff',
+                    showAvatar: true,
+                    avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'
+                },
+                textInput: {
+                    placeholder: 'Ask about Neurokokoro...',
+                    backgroundColor: '#ffffff',
+                    textColor: '#1f2937',
+                    sendButtonColor: '#00695c',
+                    maxChars: 500,
+                    maxCharsWarningMessage: 'Please keep your message under 500 characters.',
+                    autoFocus: true,
+                    sendMessageSound: false,
+                    receiveMessageSound: false
+                },
+                feedback: {
+                    color: '#6b7280'
+                },
+                dateTimeToggle: {
+                    date: true,
+                    time: true
+                },
+                footer: {
+                    textColor: '#6b7280',
+                    text: 'Powered by',
+                    company: 'EduMatrix',
+                    companyLink: 'mailto:info@edumatrix.my'
+                }
+            }
+        }
+    })
+  </script>
+</body>
+</html>

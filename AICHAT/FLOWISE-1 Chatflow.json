@@ -1,0 +1,587 @@
+{
+  "nodes": [
+    {
+      "id": "toolAgent_0",
+      "position": {
+        "x": 728,
+        "y": 247
+      },
+      "type": "customNode",
+      "data": {
+        "id": "toolAgent_0",
+        "label": "Tool Agent",
+        "version": 2,
+        "name": "toolAgent",
+        "type": "AgentExecutor",
+        "baseClasses": [
+          "AgentExecutor",
+          "BaseChain",
+          "Runnable"
+        ],
+        "category": "Agents",
+        "description": "Agent that uses Function Calling to pick the tools and args to call",
+        "inputParams": [
+          {
+            "label": "System Message",
+            "name": "systemMessage",
+            "type": "string",
+            "default": "You are a helpful AI assistant.",
+            "description": "If Chat Prompt Template is provided, this will be ignored",
+            "rows": 4,
+            "optional": true,
+            "additionalParams": true,
+            "id": "toolAgent_0-input-systemMessage-string",
+            "display": true
+          },
+          {
+            "label": "Max Iterations",
+            "name": "maxIterations",
+            "type": "number",
+            "optional": true,
+            "additionalParams": true,
+            "id": "toolAgent_0-input-maxIterations-number",
+            "display": true
+          },
+          {
+            "label": "Enable Detailed Streaming",
+            "name": "enableDetailedStreaming",
+            "type": "boolean",
+            "default": false,
+            "description": "Stream detailed intermediate steps during agent execution",
+            "optional": true,
+            "additionalParams": true,
+            "id": "toolAgent_0-input-enableDetailedStreaming-boolean",
+            "display": true
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Tools",
+            "name": "tools",
+            "type": "Tool",
+            "list": true,
+            "id": "toolAgent_0-input-tools-Tool",
+            "display": true
+          },
+          {
+            "label": "Memory",
+            "name": "memory",
+            "type": "BaseChatMemory",
+            "id": "toolAgent_0-input-memory-BaseChatMemory",
+            "display": true
+          },
+          {
+            "label": "Tool Calling Chat Model",
+            "name": "model",
+            "type": "BaseChatModel",
+            "description": "Only compatible with models that are capable of function calling: ChatOpenAI, ChatMistral, ChatAnthropic, ChatGoogleGenerativeAI, ChatVertexAI, GroqChat",
+            "id": "toolAgent_0-input-model-BaseChatModel",
+            "display": true
+          },
+          {
+            "label": "Chat Prompt Template",
+            "name": "chatPromptTemplate",
+            "type": "ChatPromptTemplate",
+            "description": "Override existing prompt with Chat Prompt Template. Human Message must includes {input} variable",
+            "optional": true,
+            "id": "toolAgent_0-input-chatPromptTemplate-ChatPromptTemplate",
+            "display": true
+          },
+          {
+            "label": "Input Moderation",
+            "description": "Detect text that could generate harmful output and prevent it from being sent to the language model",
+            "name": "inputModeration",
+            "type": "Moderation",
+            "optional": true,
+            "list": true,
+            "id": "toolAgent_0-input-inputModeration-Moderation",
+            "display": true
+          }
+        ],
+        "inputs": {
+          "tools": [
+            "{{retrieverTool_0.data.instance}}"
+          ],
+          "memory": "{{bufferWindowMemory_0.data.instance}}",
+          "model": "{{chatAnthropic_0.data.instance}}",
+          "chatPromptTemplate": "",
+          "systemMessage": "# KokoBot - EduMatrix Sales Representative System Message\n\nYou are KokoBot, EduMatrix's friendly and knowledgeable Malaysian B2B sales representative for NeuroKokoro! 🧠✨\n\n## PERSONALITY & COMMUNICATION STYLE:\n- **Warm & Professional**: Friendly yet credible, building trust from the first interaction\n- **Malaysian Touch**: Use local expressions naturally (lah, kan, mah) to connect with Malaysian educators\n- **Solution-Focused**: Always lead with how NeuroKokoro solves real educational challenges\n- **Consultative Approach**: Ask insightful questions before presenting solutions\n- **Emoji Usage**: Strategic use for engagement (not overwhelming)\n- **Conversational Flow**: Natural dialogue that feels helpful, not salesy\n\n## YOUR CORE MISSION:\nTransform how Malaysian educational institutions approach cognitive development by:\n1. **Educating** about science-backed cognitive training benefits\n2. **Qualifying** serious prospects through engaging conversations\n3. **Scheduling** demonstrations for qualified leads\n4. **Building** long-term relationships with education decision-makers\n\n## CONVERSATION FRAMEWORK:\n\n### PHASE 1: DISCOVERY & RAPPORT (First 2-3 exchanges)\n**Objectives**: Understand their context and build connection\n- Warm greeting with local touch\n- Ask about their institution type and current challenges\n- Listen actively to their specific pain points\n- Acknowledge their expertise and dedication to student success\n\n**Sample Openers**:\n- \"Hi there! 👋 What type of learning center are you running?\"\n- \"Tell me about your biggest challenges in helping students improve focus and memory\"\n- \"How are you currently supporting students who struggle with attention span?\"\n\n### PHASE 2: NEEDS ASSESSMENT & EDUCATION (Next 3-4 exchanges)\n**Objectives**: Deeply understand their needs and introduce relevant solutions\n- Explore specific student demographics and challenges\n- Understand their current teaching methodologies\n- Identify gaps that NeuroKokoro can fill\n- Begin educating about cognitive training benefits\n\n**Key Questions to Explore**:\n- Student age groups and learning challenges\n- Current programs for cognitive development\n- Technology adoption comfort level\n- Success metrics they care about\n- Budget and decision-making process\n\n### PHASE 3: SOLUTION PRESENTATION (Next 2-3 exchanges)\n**Objectives**: Present NeuroKokoro as the perfect fit for their needs\n- Connect NeuroKokoro features directly to their stated challenges\n- Share relevant success stories from similar institutions\n- Address potential concerns proactively\n- Build excitement about student outcomes\n\n### PHASE 4: QUALIFICATION & NEXT STEPS (Final exchanges)\n**Objectives**: Qualify the lead and secure next steps\n- Confirm decision-making authority\n- Understand implementation timeline\n- Gauge genuine interest level\n- Schedule demonstration or consultation\n\n## KEY VALUE PROPOSITIONS TO EMPHASIZE:\n\n### 🎯 **FOR TUITION CENTERS**:\n- **Competitive Edge**: \"Stand out in Malaysia's crowded tuition market\"\n- **Student Retention**: \"Parents see real cognitive improvements\"\n- **Premium Positioning**: \"Offer something no other center has\"\n\n### 🏫 **FOR INTERNATIONAL SCHOOLS**:\n- **Academic Excellence**: \"Boost students' core cognitive abilities\"\n- **Innovation Leadership**: \"Be pioneers in cognitive education\"\n- **Parent Satisfaction**: \"Measurable brain development results\"\n\n### 🌟 **FOR ENRICHMENT CENTERS**:\n- **Holistic Development**: \"Beyond academics - build thinking skills\"\n- **Fun Learning**: \"Gamified approach kids actually enjoy\"\n- **Proven Results**: \"Track cognitive improvements scientifically\"\n\n## NEUROKOKORO CORE BENEFITS TO HIGHLIGHT:\n\n✅ **Science-Backed Methodology**: Built on neuroscience research, not just games\n✅ **Executive Function Training**: Memory, attention, cognitive flexibility, working memory\n✅ **AI-Adaptive Technology**: Personalizes difficulty to each child's level\n✅ **Real-Time Analytics**: Track progress with detailed cognitive assessments\n✅ **Gamified Engagement**: Makes brain training fun and motivating\n✅ **Teacher Dashboard**: Complete oversight and student management tools\n✅ **Flexible Implementation**: Works with existing curriculum or standalone\n✅ **Age-Appropriate Content**: Designed specifically for developing minds\n\n## OBJECTION HANDLING STRATEGIES:\n\n### 💰 **\"Too expensive\"**:\n\"I understand budget is important. Let's look at the ROI - when parents see their children's improved focus and academic performance, your center becomes their first choice. Many centers find NeuroKokoro actually increases enrollment and retention.\"\n\n### 🤔 **\"Not sure about technology\"**:\n\"That's totally understandable! NeuroKokoro is designed to be teacher-friendly. We provide full training and support. Plus, kids today are digital natives - they love the interactive approach.\"\n\n### ⏰ **\"No time for new programs\"**:\n\"Actually, NeuroKokoro saves time by making learning more efficient. When students have better focus and memory, they learn everything else faster too.\"\n\n### 📚 **\"Already have enough programs\"**:\n\"NeuroKokoro isn't just another program - it's the foundation that makes all your other programs more effective. Better cognitive skills mean better results in math, languages, everything.\"\n\n## LEAD QUALIFICATION CRITERIA:\n\n### 🔥 **HOT LEADS** (Schedule immediately):\n- Decision maker or strong influence on decisions\n- Specific student challenges that NeuroKokoro solves\n- Timeline within 3-6 months\n- Budget authority or process clarity\n- Multiple follow-up questions showing genuine interest\n\n### 🌡️ **WARM LEADS** (Nurture and follow up):\n- Interested but not decision maker\n- General interest in cognitive development\n- Longer timeline (6+ months)\n- Need to consult with others\n- Asking about pricing/logistics\n\n### ❄️ **COLD LEADS** (Provide resources, stay in touch):\n- Just browsing/researching\n- No clear timeline or budget\n- Limited decision-making authority\n- Skeptical about cognitive training\n- Price-focused without value understanding\n\n## INFORMATION TO COLLECT NATURALLY:\n\n### 📋 **ESSENTIAL DETAILS**:\n- **Name & Role**: Decision-making authority level\n- **Institution**: Type, size, location in Malaysia\n- **Contact**: Email and/or WhatsApp number\n- **Timeline**: When they're looking to implement\n- **Challenges**: Specific student/business needs\n\n### 📊 **HELPFUL CONTEXT**:\n- Current student enrollment numbers\n- Age groups served\n- Existing technology comfort level\n- Competition in their area\n- Success metrics they track\n\n## SCHEDULING & NEXT STEPS:\n\n### 🎯 **FOR QUALIFIED PROSPECTS**:\n\"Based on what you've shared, I think a 15-minute demo would be perfect to show you exactly how NeuroKokoro can help your students. I can arrange a session where you'll see the actual games and teacher dashboard. Would this week or next week work better for you?\"\n\n**Calendly Link**: https://calendly.com/saminsarwat-ai/neurokokoro\n\n### 📧 **FOLLOW-UP OPTIONS**:\n- Email additional resources\n- WhatsApp for quick questions: +60 17-241 0837\n- Schedule callback for decision committee\n- Arrange group demonstration\n\n## CONVERSATION TONE EXAMPLES:\n\n### 🌟 **Opening Energy**:\n\"Hi there! 😊 I'm KokoBot from EduMatrix. We help learning centers across Malaysia give their students a real cognitive edge with NeuroKokoro's brain training program. What type of center are you running?\"\n\n### 🤝 **Building Rapport**:\n\"Wah, that sounds challenging lah! So many parents want their kids to improve focus and memory, but traditional methods tak berapa effective, kan? That's exactly why we brought NeuroKokoro to Malaysia.\"\n\n### 💡 **Solution Presentation**:\n\"Perfect! So for a center like yours, NeuroKokoro would be game-changing. Imagine parents seeing their child's attention span improve by 40% in just 8 weeks - confirmed by actual cognitive assessments. That's the kind of results that make your center stand out.\"\n\n### 🎯 **Closing for Demo**:\n\"I'm excited about the possibilities for your center! The best way to see if this is a fit is a quick 15-minute demo. You'll see exactly how the games work and the kind of data you'll get on student progress. Shall we set that up?\"\n\n## SUCCESS METRICS TO TRACK:\n- **Engagement Rate**: Length and depth of conversations\n- **Qualification Rate**: % of visitors who become qualified leads\n- **Demo Booking Rate**: % of qualified leads who schedule demos\n- **Response Quality**: Relevance and helpfulness of answers\n- **Lead Information**: Completeness of contact details collected\n\n## RESOURCES TO REFERENCE:\n\n### 🌐 **Primary Resources**:\n- **Main Website**: https://neurokokoro.sg/neurokokoro.php\n- **Booking Calendar**: https://calendly.com/saminsarwat-ai/neurokokoro\n- **EduMatrix Contact**: info@edumatrix.my\n- **WhatsApp**: +60 17-241 0837\n\n### 📚 **Supporting Materials** (Reference when relevant):\n- Case studies from similar institutions\n- Research papers on cognitive training\n- Student progress examples\n- ROI calculations for learning centers\n\n## REMEMBER - YOU ARE:\n🎯 **A Consultant, Not Just a Salesperson**: Help them solve real educational challenges\n🤝 **Relationship Builder**: Focus on long-term partnership potential\n🧠 **Education Expert**: Knowledgeable about learning and cognitive development\n🇲🇾 **Local Partner**: Understanding Malaysian education landscape\n🚀 **Innovation Catalyst**: Helping them stay ahead of educational trends\n\nYour ultimate goal: Help Malaysian educators discover how NeuroKokoro can unlock their students' cognitive potential and give their institution a competitive advantage in the market! 🌟",
+          "inputModeration": "",
+          "maxIterations": "",
+          "enableDetailedStreaming": true
+        },
+        "outputAnchors": [
+          {
+            "id": "toolAgent_0-output-toolAgent-AgentExecutor|BaseChain|Runnable",
+            "name": "toolAgent",
+            "label": "AgentExecutor",
+            "description": "Agent that uses Function Calling to pick the tools and args to call",
+            "type": "AgentExecutor | BaseChain | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 492,
+      "positionAbsolute": {
+        "x": 728,
+        "y": 247
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "chatAnthropic_0",
+      "position": {
+        "x": 261.6600605904564,
+        "y": 297.79058647474614
+      },
+      "type": "customNode",
+      "data": {
+        "id": "chatAnthropic_0",
+        "label": "ChatAnthropic",
+        "version": 8,
+        "name": "chatAnthropic",
+        "type": "ChatAnthropic",
+        "baseClasses": [
+          "ChatAnthropic",
+          "ChatAnthropicMessages",
+          "BaseChatModel",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "category": "Chat Models",
+        "description": "Wrapper around ChatAnthropic large language models that use the Chat endpoint",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "anthropicApi"
+            ],
+            "id": "chatAnthropic_0-input-credential-credential",
+            "display": true
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "default": "claude-3-haiku",
+            "id": "chatAnthropic_0-input-modelName-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "step": 0.1,
+            "default": 0.9,
+            "optional": true,
+            "id": "chatAnthropic_0-input-temperature-number",
+            "display": true
+          },
+          {
+            "label": "Streaming",
+            "name": "streaming",
+            "type": "boolean",
+            "default": true,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatAnthropic_0-input-streaming-boolean",
+            "display": true
+          },
+          {
+            "label": "Max Tokens",
+            "name": "maxTokensToSample",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatAnthropic_0-input-maxTokensToSample-number",
+            "display": true
+          },
+          {
+            "label": "Top P",
+            "name": "topP",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatAnthropic_0-input-topP-number",
+            "display": true
+          },
+          {
+            "label": "Top K",
+            "name": "topK",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatAnthropic_0-input-topK-number",
+            "display": true
+          },
+          {
+            "label": "Extended Thinking",
+            "name": "extendedThinking",
+            "type": "boolean",
+            "description": "Enable extended thinking for reasoning model such as Claude Sonnet 3.7",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatAnthropic_0-input-extendedThinking-boolean",
+            "display": true
+          },
+          {
+            "label": "Budget Tokens",
+            "name": "budgetTokens",
+            "type": "number",
+            "step": 1,
+            "default": 1024,
+            "description": "Maximum number of tokens Claude is allowed use for its internal reasoning process",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatAnthropic_0-input-budgetTokens-number",
+            "display": true
+          },
+          {
+            "label": "Allow Image Uploads",
+            "name": "allowImageUploads",
+            "type": "boolean",
+            "description": "Allow image input. Refer to the <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">docs</a> for more details.",
+            "default": false,
+            "optional": true,
+            "id": "chatAnthropic_0-input-allowImageUploads-boolean",
+            "display": true
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "chatAnthropic_0-input-cache-BaseCache",
+            "display": true
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "modelName": "claude-sonnet-4-0",
+          "temperature": "0.7",
+          "streaming": true,
+          "maxTokensToSample": "",
+          "topP": "",
+          "topK": "",
+          "extendedThinking": "",
+          "budgetTokens": 1024,
+          "allowImageUploads": true
+        },
+        "outputAnchors": [
+          {
+            "id": "chatAnthropic_0-output-chatAnthropic-ChatAnthropic|ChatAnthropicMessages|BaseChatModel|BaseLanguageModel|Runnable",
+            "name": "chatAnthropic",
+            "label": "ChatAnthropic",
+            "description": "Wrapper around ChatAnthropic large language models that use the Chat endpoint",
+            "type": "ChatAnthropic | ChatAnthropicMessages | BaseChatModel | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 676,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 261.6600605904564,
+        "y": 297.79058647474614
+      }
+    },
+    {
+      "id": "bufferWindowMemory_0",
+      "position": {
+        "x": -105.45450158415375,
+        "y": 135.7616968897118
+      },
+      "type": "customNode",
+      "data": {
+        "id": "bufferWindowMemory_0",
+        "label": "Buffer Window Memory",
+        "version": 2,
+        "name": "bufferWindowMemory",
+        "type": "BufferWindowMemory",
+        "baseClasses": [
+          "BufferWindowMemory",
+          "BaseChatMemory",
+          "BaseMemory"
+        ],
+        "category": "Memory",
+        "description": "Uses a window of size k to surface the last k back-and-forth to use as memory",
+        "inputParams": [
+          {
+            "label": "Size",
+            "name": "k",
+            "type": "number",
+            "default": "4",
+            "description": "Window of size k to surface the last k back-and-forth to use as memory.",
+            "id": "bufferWindowMemory_0-input-k-number",
+            "display": true
+          },
+          {
+            "label": "Session Id",
+            "name": "sessionId",
+            "type": "string",
+            "description": "If not specified, a random id will be used. Learn <a target=\"_blank\" href=\"https://docs.flowiseai.com/memory#ui-and-embedded-chat\">more</a>",
+            "default": "",
+            "optional": true,
+            "additionalParams": true,
+            "id": "bufferWindowMemory_0-input-sessionId-string",
+            "display": true
+          },
+          {
+            "label": "Memory Key",
+            "name": "memoryKey",
+            "type": "string",
+            "default": "chat_history",
+            "additionalParams": true,
+            "id": "bufferWindowMemory_0-input-memoryKey-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "k": "30",
+          "sessionId": "",
+          "memoryKey": "chat_history"
+        },
+        "outputAnchors": [
+          {
+            "id": "bufferWindowMemory_0-output-bufferWindowMemory-BufferWindowMemory|BaseChatMemory|BaseMemory",
+            "name": "bufferWindowMemory",
+            "label": "BufferWindowMemory",
+            "description": "Uses a window of size k to surface the last k back-and-forth to use as memory",
+            "type": "BufferWindowMemory | BaseChatMemory | BaseMemory"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 337,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -105.45450158415375,
+        "y": 135.7616968897118
+      },
+      "dragging": false
+    },
+    {
+      "id": "retrieverTool_0",
+      "position": {
+        "x": -447.0108632744829,
+        "y": 173.84072330209813
+      },
+      "type": "customNode",
+      "data": {
+        "id": "retrieverTool_0",
+        "label": "Retriever Tool",
+        "version": 3,
+        "name": "retrieverTool",
+        "type": "RetrieverTool",
+        "baseClasses": [
+          "RetrieverTool",
+          "DynamicTool",
+          "Tool",
+          "StructuredTool",
+          "Runnable"
+        ],
+        "category": "Tools",
+        "description": "Use a retriever as allowed tool for agent",
+        "inputParams": [
+          {
+            "label": "Retriever Name",
+            "name": "name",
+            "type": "string",
+            "placeholder": "search_state_of_union",
+            "id": "retrieverTool_0-input-name-string",
+            "display": true
+          },
+          {
+            "label": "Retriever Description",
+            "name": "description",
+            "type": "string",
+            "description": "When should agent uses to retrieve documents",
+            "rows": 3,
+            "placeholder": "Searches and returns documents regarding the state-of-the-union.",
+            "id": "retrieverTool_0-input-description-string",
+            "display": true
+          },
+          {
+            "label": "Return Source Documents",
+            "name": "returnSourceDocuments",
+            "type": "boolean",
+            "optional": true,
+            "id": "retrieverTool_0-input-returnSourceDocuments-boolean",
+            "display": true
+          },
+          {
+            "label": "Additional Metadata Filter",
+            "name": "retrieverToolMetadataFilter",
+            "type": "json",
+            "description": "Add additional metadata filter on top of the existing filter from vector store",
+            "optional": true,
+            "additionalParams": true,
+            "hint": {
+              "label": "What can you filter?",
+              "value": "Add additional filters to vector store. You can also filter with flow config, including the current \"state\":\n- `$flow.sessionId`\n- `$flow.chatId`\n- `$flow.chatflowId`\n- `$flow.input`\n- `$flow.state`\n"
+            },
+            "id": "retrieverTool_0-input-retrieverToolMetadataFilter-json",
+            "display": true
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Retriever",
+            "name": "retriever",
+            "type": "BaseRetriever",
+            "id": "retrieverTool_0-input-retriever-BaseRetriever",
+            "display": true
+          }
+        ],
+        "inputs": {
+          "name": "Document",
+          "description": "Searches and returns human like answer from the document and saves ",
+          "retriever": "{{documentStoreVS_0.data.instance}}",
+          "returnSourceDocuments": false,
+          "retrieverToolMetadataFilter": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "retrieverTool_0-output-retrieverTool-RetrieverTool|DynamicTool|Tool|StructuredTool|Runnable",
+            "name": "retrieverTool",
+            "label": "RetrieverTool",
+            "description": "Use a retriever as allowed tool for agent",
+            "type": "RetrieverTool | DynamicTool | Tool | StructuredTool | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 662,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -447.0108632744829,
+        "y": 173.84072330209813
+      },
+      "dragging": false
+    },
+    {
+      "id": "documentStoreVS_0",
+      "position": {
+        "x": -838.0880459150492,
+        "y": 343.26278643470937
+      },
+      "type": "customNode",
+      "data": {
+        "id": "documentStoreVS_0",
+        "label": "Document Store (Vector)",
+        "version": 1,
+        "name": "documentStoreVS",
+        "type": "DocumentStoreVS",
+        "baseClasses": [
+          "DocumentStoreVS"
+        ],
+        "category": "Vector Stores",
+        "description": "Search and retrieve documents from Document Store",
+        "inputParams": [
+          {
+            "label": "Select Store",
+            "name": "selectedStore",
+            "type": "asyncOptions",
+            "loadMethod": "listStores",
+            "id": "documentStoreVS_0-input-selectedStore-asyncOptions",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "selectedStore": "4720aff8-eb0a-4120-b36d-64d8f396f25a"
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "description": "",
+            "options": [
+              {
+                "id": "documentStoreVS_0-output-retriever-BaseRetriever",
+                "name": "retriever",
+                "label": "Retriever",
+                "description": "",
+                "type": "BaseRetriever"
+              },
+              {
+                "id": "documentStoreVS_0-output-vectorStore-VectorStore",
+                "name": "vectorStore",
+                "label": "Vector Store",
+                "description": "",
+                "type": "VectorStore"
+              }
+            ],
+            "default": "retriever"
+          }
+        ],
+        "outputs": {
+          "output": "retriever"
+        },
+        "selected": false
+      },
+      "width": 300,
+      "height": 318,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": -838.0880459150492,
+        "y": 343.26278643470937
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "chatAnthropic_0",
+      "sourceHandle": "chatAnthropic_0-output-chatAnthropic-ChatAnthropic|ChatAnthropicMessages|BaseChatModel|BaseLanguageModel|Runnable",
+      "target": "toolAgent_0",
+      "targetHandle": "toolAgent_0-input-model-BaseChatModel",
+      "type": "buttonedge",
+      "id": "chatAnthropic_0-chatAnthropic_0-output-chatAnthropic-ChatAnthropic|ChatAnthropicMessages|BaseChatModel|BaseLanguageModel|Runnable-toolAgent_0-toolAgent_0-input-model-BaseChatModel"
+    },
+    {
+      "source": "bufferWindowMemory_0",
+      "sourceHandle": "bufferWindowMemory_0-output-bufferWindowMemory-BufferWindowMemory|BaseChatMemory|BaseMemory",
+      "target": "toolAgent_0",
+      "targetHandle": "toolAgent_0-input-memory-BaseChatMemory",
+      "type": "buttonedge",
+      "id": "bufferWindowMemory_0-bufferWindowMemory_0-output-bufferWindowMemory-BufferWindowMemory|BaseChatMemory|BaseMemory-toolAgent_0-toolAgent_0-input-memory-BaseChatMemory"
+    },
+    {
+      "source": "retrieverTool_0",
+      "sourceHandle": "retrieverTool_0-output-retrieverTool-RetrieverTool|DynamicTool|Tool|StructuredTool|Runnable",
+      "target": "toolAgent_0",
+      "targetHandle": "toolAgent_0-input-tools-Tool",
+      "type": "buttonedge",
+      "id": "retrieverTool_0-retrieverTool_0-output-retrieverTool-RetrieverTool|DynamicTool|Tool|StructuredTool|Runnable-toolAgent_0-toolAgent_0-input-tools-Tool"
+    },
+    {
+      "source": "documentStoreVS_0",
+      "sourceHandle": "documentStoreVS_0-output-retriever-BaseRetriever",
+      "target": "retrieverTool_0",
+      "targetHandle": "retrieverTool_0-input-retriever-BaseRetriever",
+      "type": "buttonedge",
+      "id": "documentStoreVS_0-documentStoreVS_0-output-retriever-BaseRetriever-retrieverTool_0-retrieverTool_0-input-retriever-BaseRetriever"
+    }
+  ]
+}
